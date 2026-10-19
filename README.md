@@ -711,8 +711,8 @@ Run in this order. Each line should end in a checkable number or file.
 
 | Resource | Identifier |
 |---|---|
-| Bulk and single-cell RNA-seq | GSA **CRA048632** — https://ngdc.cncb.ac.cn/gsa/s/KDuw3yUs |
-| Platelet and plasma proteomics | OMIX **OMIX019903** — https://ngdc.cncb.ac.cn/omix/preview/PZYoGg8cP4 |
+| Bulk and single-cell RNA-seq | GSA CRA048632|
+| Platelet and plasma proteomics | OMIX OMIX019903|
 | Analysis code | https://github.com/qiubaoshan/GPVI_AIS |
 | Clinical trial (ESPRIT) | NCT05836753 |
 
