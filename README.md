@@ -27,7 +27,7 @@ succeeded.
 8. [Module 4 — Cell–cell communication](#8-module-4--cellcell-communication)
 9. [Figure-to-script map](#9-figure-to-script-map)
 10. [Manuscript alignment notes](#10-manuscript-alignment-notes)
-11. [Data and code availability](#13-data-and-code-availability)
+11. [Data and code availability](#11-data-and-code-availability)
 
 ---
 
