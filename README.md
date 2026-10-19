@@ -27,9 +27,7 @@ succeeded.
 8. [Module 4 — Cell–cell communication](#8-module-4--cellcell-communication)
 9. [Figure-to-script map](#9-figure-to-script-map)
 10. [Manuscript alignment notes](#10-manuscript-alignment-notes)
-11. [Reproduction checklist](#11-reproduction-checklist)
-12. [Troubleshooting](#12-troubleshooting)
-13. [Data and code availability](#13-data-and-code-availability)
+11. [Data and code availability](#13-data-and-code-availability)
 
 ---
 
@@ -655,59 +653,7 @@ sentence each because they change reported numbers:
 
 ---
 
-## 11. Reproduction checklist
-
-Run in this order. Each line should end in a checkable number or file.
-
-**Bulk RNA-seq**
-
-- [ ] `00_align_quant.sh` with `-s 2`; matrix has one column per sample sheet row
-- [ ] PCA separates genotypes on PC1/PC2
-- [ ] `BULK-BRAIN`: 69 DEGs (67 down, 2 up)
-- [ ] `BULK-NEU` 3 h: 1,334 DEGs (1,150 down, 184 up); basal: 1 gene
-- [ ] `<tag>_GSEA_GO_BP.csv` contains the adhesion / homophilic-adhesion terms and `ranking_metric = stat`
-
-**Proteomics**
-
-- [ ] Protein matrix at 1% FDR, PSM / peptide / protein level
-- [ ] Rank-abundance curves reproduced for both genotypes
-- [ ] `PROT-PLASMA`: 13 DEPs (10 down, 3 up)
-- [ ] `<tag>_DEP_summary.tsv` records `p_column`; rich-factor denominators present in `<tag>_GO_BP.csv`
-
-**Single-cell**
-
-- [ ] `_01_runinfo.txt` records QC, integration and PC count; cell number matches the reported one
-- [ ] 15 Louvain clusters at resolution 1.0
-- [ ] All lineages present; `cluster2cell.tsv` fully populated
-- [ ] Composition plot reproduces the neutrophil / endothelial shift
-- [ ] 4D gene lists and enrichment tables regenerated — currently notebook-only (10.6)
-
-**CellChat**
-
-- [ ] Both genotypes inferred independently; interaction counts logged
-- [ ] `min.cells = 10`, `raw.use = TRUE`
-- [ ] Endothelial → neutrophil interaction strength lower in KO
-- [ ] Senders resolved by name; no numeric ident in any call
-
----
-
-## 12. Troubleshooting
-
-| Symptom | Likely cause | Fix |
-|---|---|---|
-| DEG count far above published | `-s 0` in featureCounts, or protein-coding filter skipped | rerun with `-s 2` |
-| Groups swapped in volcano | sample sheet rows out of step with matrix columns | check `sample_id` / `genotype` in the sheet |
-| Empty heatmap | group levels not present in metadata | check the sheet against column names |
-| `stop("genotype must be WT or KO")` | sheet uses the library codes instead of genotypes | put `NS`/`YY` in `sample_id`, `WT`/`KO` in `genotype` |
-| `enrichGO` returns 0 terms | duplicated symbols or wrong `keyType` | unique + `na.omit` |
-| Harmony embeddings all identical | `condition` is not categorical, or one group vanished after subsetting | check `obs.condition.value_counts()` |
-| Bubble plot empty | sender name not in idents | the script prints available idents on failure |
-| `computeCommunProb` memory blow-up | too many populations or `nboot` too high | lower `nboot` while exploring; restore 100 for final |
-| Figures differ only in term order | `clusterProfiler` minor-version drift | pin versions; note in Methods |
-
----
-
-## 13. Data and code availability
+## 11. Data and code availability
 
 | Resource | Identifier |
 |---|---|
